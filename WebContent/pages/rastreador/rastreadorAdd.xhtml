@@ -1,0 +1,55 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    
+ 	<ui:composition template="/pages/rastreador/template.xhtml" >
+ 		<ui:define name="conteudo" >
+ 			<h:form id="form_rastreador_add">
+ 				<p:messages />
+ 				
+ 				<table cellpadding="10" width="600">
+ 					<tr>
+ 						<td>
+ 							<h:outputLabel value="Nome para o novo rastreador *" for="nome" styleClass="ui-outputlabel"/>
+ 							<p:inputText value="#{rastreadorBean.rastreador.nome}" id="nome" size="30" maxlength="50" required="true" requiredMessage="O campo Nome é obrigatório."/>
+ 						</td>
+ 						<td>
+ 							<h:outputLabel value="Código(IMEI) *" for="cod" styleClass="ui-outputlabel"/>
+ 							<p:inputText value="#{rastreadorBean.rastreador.codigo}" id="cod" size="20" maxlength="20" required="true" requiredMessage="O campo Código(IMEI) é obrigatório."/>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td>
+ 							<h:outputLabel value="Número do chip *" for="chip" styleClass="ui-outputlabel"/>
+ 							<p:inputMask value="#{rastreadorBean.rastreador.numCel}" mask="(99)9999-9999" id="chip" maxlength="13" required="true" requiredMessage="O campo Número do chip é obrigatório." />
+ 						</td>
+ 						<td>
+ 							<h:outputLabel value="Modelo do rastreador" for="tipo"/>
+ 							<p:selectOneMenu value="#{rastreadorBean.rastreador.idTipo}" id="tipo" required="true">
+ 								<f:selectItems var="r" value="#{rastreadorBean.rastreadorTipo}" itemLabel="#{r.nome}" itemValue="#{r.id}"/>
+ 							</p:selectOneMenu>
+ 						</td>
+ 					</tr>
+ 					<tr>
+ 						<td>
+ 							<h:outputLabel value="Senha de bloqueio *" for="senha" styleClass="ui-outputlabel"/>
+ 							<p:inputText type="password" value="#{rastreadorBean.rastreador.senha}" id="senha" size="30" maxlength="20" required="true" requiredMessage="O campo Senha de bloqueio é obrigatório."/>
+ 						</td>
+ 						<td>
+ 							<h:outputLabel value="Confirme a senha *" for="csenha" styleClass="ui-outputlabel"/>
+ 							<p:inputText type="password" value="#{rastreadorBean.rastreador.senhaConfirm}" id="csenha" size="30" maxlength="20" required="true" requiredMessage="O campo Confirme a senha é obrigatório."/>
+ 						</td>
+ 					</tr>
+ 				</table>
+ 				<br/>
+ 				<p:commandButton value="Adicionar" action="#{rastreadorBean.adicionar}" ajax="false" process="form_rastreador_add" update="@all" icon="ui-icon-plus"/>
+ 			</h:form>
+ 		</ui:define>
+  	</ui:composition>
+</html>

@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    
+ 	<ui:composition template="/pages/home/template.xhtml" >
+ 		
+ 		<ui:define name="css">
+ 			<link href="#{request.contextPath}/assets/css/login.css?v=#{appBean.versao}" rel="stylesheet" type="text/css" media="screen"/>
+ 		</ui:define>
+ 		
+ 		<ui:define name="content">
+ 			<div class="main content clearfix">
+  				<div class="sign-in">
+  					<div class="signin-box">
+  						<h2>Login <strong></strong></h2>
+  						
+  						<h:form id="login">
+							<p:messages id="mensagens" />
+							<h:panelGrid columns="1">
+								<p:outputLabel value="Email" for="login_username" />
+						    	<p:inputText  value="#{loginBean.usuario.email}" id="login_username" maxlength="30" size="40" title="Por favor, informe seu email"/>
+							
+								<p:outputLabel value="Senha" for="login_password" />
+							    <p:keyboard password="true" value="#{loginBean.usuario.senha}" id="login_password" maxlength="20" size="40" title="Senha � obrigat�ria."/>
+							</h:panelGrid>
+							<table width="100%">
+								<tr>
+									<td align="left">
+										<p:commandLink value="Esqueceu sua senha?" action="/pages/home/recuperar_senha/informar_email" ajax="false" immediate="true" /> 
+									</td>
+									<td align="right">
+										<p:commandButton ajax="false" value="Entrar" process="@form" update="@form" action="#{loginBean.validarAcesso}" id="entrar" icon="ui-icon-locked"/>
+									</td>
+								</tr>
+							</table>
+						</h:form>
+  					</div>
+  				</div>
+  				
+  				
+  				
+  				
+  				
+  				<div class="product-info mail">
+					<div class="product-headers">
+					  <h1 class="redtext">rastreware</h1>
+					  <h2>Serviço de rastreamento.</h2>
+					</div>
+					<p>
+					 	&nbsp;&nbsp;&nbsp;Somos uma empresa de prestação de serviços de rastreamento, controle e localização de veículos com comunicação de dados de alta performance. Utilizando-se de um equipamento 
+						moderno oferecemos segurança complementar ao seguro do veículo, cobrindo o que existe de mais importante tanto para pessoas como empresas que é a vida do passageiro e a carga.
+					</p>
+					<table class="features">
+						<tr>
+							<td>
+								<h:panelGrid columns="6" width="100%">
+									<h:graphicImage url="/assets/images/icons/bulldozer.png" />
+									<h:graphicImage url="/assets/images/icons/truck.png" />
+									<h:graphicImage url="/assets/images/icons/van.png" />
+									<h:graphicImage url="/assets/images/icons/taxi.png" />
+									<h:graphicImage url="/assets/images/icons/car.png" />
+									<h:graphicImage url="/assets/images/icons/vespa.png" />
+								</h:panelGrid>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<br /><br />
+							  	&nbsp;&nbsp;&nbsp;O sistema de rastreamento <b>rastreware</b> utiliza 1 equipamento que contém agregado o GPS e um transmissor utilizando tecnologia Celular GSM/GPRS, que juntos s�o conhecidos como rastreador via sat�lite. Os dados do posicionamento s�o identificados pelo GPS e s�o transmitidos de tempo em tempo conforme programa��o do nosso servidor de monitoramento atrav�s do equipamento com tecnologia celular. 
+								<br /><br />
+								&nbsp;&nbsp;&nbsp;O rastreador funciona conforme programa��o da central de monitoramento e a <b>rastreware</b> oferece solu��es pr�-programadas em pacotes de posi��es, caso seja preciso, o servi�o pode ser customizado conforme avalia��o junto ao cliente. O bloqueio do ve�culo, trava e destrava do ba�, controle das portas, o bot�o de p�nico, cerca eletr�nica e outros servi�os s�o controlados pelo nosso software de rastreamento, mas podem ser controlados tamb�m diretamente pelo cliente.
+							</td>
+						</tr>
+					</table>
+				</div>
+  			</div>
+ 		</ui:define>
+  	</ui:composition>
+</html>

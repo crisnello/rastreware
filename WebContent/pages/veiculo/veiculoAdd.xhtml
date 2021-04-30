@@ -1,0 +1,92 @@
+<?xml version='1.0' encoding='ISO-8859-1' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"
+      xmlns:p="http://primefaces.org/ui"
+      >
+    
+ 	<ui:composition template="/pages/veiculo/template.xhtml" >
+ 		<ui:define name="conteudo" >
+ 			<h:form id="form_veiculo_add">
+ 				<p:messages />
+ 				
+ 				<p:selectOneRadio id="customRadio" value="#{veiculoBean.veiculo.icone}" layout="custom" required="true" requiredMessage="Selecione a imagem do veículo.">  
+			        <f:selectItem itemLabel="car.png" itemValue="car.png" />  
+			        <f:selectItem itemLabel="bus.png" itemValue="bus.png" />  
+			        <f:selectItem itemLabel="motorcycle.png" itemValue="motorcycle.png" /> 
+			        <f:selectItem itemLabel="truck.png" itemValue="truck.png" />
+			        <f:selectItem itemLabel="vespa.png" itemValue="vespa.png" /> 
+			    </p:selectOneRadio> 
+ 				
+ 				<table width="600">
+ 					<tr>
+ 						<td align="center">
+ 							<h:graphicImage url="/assets/images/icons/car.png"/>
+ 							<p:radioButton id="opt1" for="customRadio" itemIndex="0"/> 
+ 						</td>
+ 						<td align="center">
+ 							<h:graphicImage url="/assets/images/icons/bus.png"/>
+ 							<p:radioButton id="opt2" for="customRadio" itemIndex="1"/> 
+ 						</td>
+ 						<td align="center">
+ 							<h:graphicImage url="/assets/images/icons/motorcycle.png"/>
+ 							<p:radioButton id="opt3" for="customRadio" itemIndex="2"/> 
+ 						</td>
+ 						<td align="center">
+ 							<h:graphicImage url="/assets/images/icons/truck.png"/>
+ 							<p:radioButton id="opt4" for="customRadio" itemIndex="3"/> 
+ 						</td>
+ 						<td align="center">
+ 							<h:graphicImage url="/assets/images/icons/vespa.png"/>
+ 							<p:radioButton id="opt5" for="customRadio" itemIndex="4"/> 
+ 						</td>
+ 					</tr>
+ 				</table>
+	 			<table cellpadding="10" width="600">
+	 				<tr>
+	 					<td>
+	 						<h:outputLabel value="Modelo do veículo *" for="modelo" styleClass="ui-outputlabel"/>
+	 						<p:inputText value="#{veiculoBean.veiculo.modelo}" id="modelo" size="40" maxlength="35" required="true" requiredMessage="Modelo do veículo é obrigatório."/>
+	 					</td>
+	 					<td>
+	 						<h:outputLabel value="Placa *" for="placa" styleClass="ui-outputlabel"/>
+	 						<p:inputText value="#{veiculoBean.veiculo.placa}" id="placa" size="30" maxlength="7" required="true" requiredMessage="Placa é obrigatória."/>
+	 					</td>
+	 				</tr>
+	 				<tr>
+	 					<td>
+	 						<p:outputLabel value="Km rodados" for="km"/>
+	 						<p:spinner value="#{veiculoBean.veiculo.km}" id="km" />
+	 					</td>
+	 					<td>
+	 						<p:outputLabel value="Rastreador" for="rastreador"/>
+	 						<p:selectOneMenu id="rastreador" value="#{veiculoBean.veiculo.idRastreador}" >
+	 							<f:selectItems value="#{veiculoBean.rastreadores}" var="r" itemLabel="#{r.nome}" itemValue="#{r.id}" />
+	 						</p:selectOneMenu>
+	 					</td>
+	 				</tr>
+	 				<tr>
+	 					<td colspan="2">
+	 						<p:outputLabel value="O veículo possuí módulo de bloqueio instalado?" for="bloqueio"/>
+	 						<p:selectOneMenu id="bloqueio" value="#{veiculoBean.veiculo.possuiBloqueio}" >
+	 							<f:selectItem itemLabel="Sim" itemValue="0" />
+	 							<f:selectItem itemLabel="Não" itemValue="1" />
+	 						</p:selectOneMenu>
+	 					</td>
+	 				</tr>
+	 				
+	 				<tr>
+	 					<td colspan="2">
+	 						<p:commandButton value="Adicionar" ajax="false" action="#{veiculoBean.adicionar}" icon="ui-icon-plus" />
+	 					</td>
+	 				</tr>
+	 				
+	 			</table>
+	 			
+ 			</h:form>
+ 		</ui:define>
+  	</ui:composition>
+</html>
